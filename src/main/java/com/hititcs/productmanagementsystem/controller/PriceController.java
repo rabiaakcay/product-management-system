@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class PriceController {
     private final PriceService priceService;
@@ -41,7 +43,7 @@ public class PriceController {
     }
 
     @RequestMapping("/add-price")
-    public String createPrice(Price price, BindingResult result, Model model) {
+    public String createPrice(@Valid Price price, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-price";
         }

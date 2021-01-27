@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -42,7 +43,7 @@ public class CategoryController {
     }
 
     @RequestMapping("/add-category")
-    public String createCategory(Category category, BindingResult result, Model model) {
+    public String createCategory(@Valid Category category, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-category";
         }

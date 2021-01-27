@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,12 +30,15 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "Please provide a name")
     @Column(name = "name", length = 100, nullable = false)
     private String name;
 
+    @NotNull(message = "Please provide a serial name")
     @Column(name = "serialName", length = 50, nullable = false)
     private String serialName;
 
+    @NotNull(message = "Please provide a description")
     @Column(name = "description", length = 250, nullable = false)
     private String description;
 

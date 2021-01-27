@@ -23,6 +23,7 @@
                         <div class="form-group col-md-8">
                             <label for="price_info" class="col-form-label">Price Name</label>
                             <input type="text" th:field="*{price_info}" class="form-control" id="price_info" placeholder="Price Info" />
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('price_info')}" th:errors="*{price_info}"></p>
                         </div>
 
                         <div class="col-md-6">

@@ -26,16 +26,19 @@
                         <div class="form-group col-md-8">
                             <label for="name" class="col-form-label">Product Name</label>
                             <input type="text" th:field="*{name}" class="form-control" id="name"placeholder="Product Name" />
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="serialName" class="col-form-label">SerialName </label>
                             <input type="text" th:field="*{serialName}" class="form-control" id="serialName" placeholder="Serial Name" />
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('serialName')}" th:errors="*{serialName}"></p>
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="description" class="col-form-label">Description</label>
                             <input type="text" th:field="*{description}" class="form-control" id="description" placeholder="Description" />
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
                         </div>
 
 

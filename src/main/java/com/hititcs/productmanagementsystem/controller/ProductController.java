@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -63,7 +64,7 @@ public class ProductController {
     }
 
     @RequestMapping("/add-product")
-    public String createProduct(Product product, BindingResult result, Model model) {
+    public String createProduct(@Valid Product product, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-product";
         }

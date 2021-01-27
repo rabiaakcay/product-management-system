@@ -23,6 +23,8 @@
                         <div class="form-group col-md-8">
                             <label for="name" class="col-form-label">Category Name</label>
                             <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Category Name" />
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
                         </div>
 
                         <div class="col-md-6">
