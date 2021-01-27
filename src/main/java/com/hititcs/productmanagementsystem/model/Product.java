@@ -14,7 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,28 +31,31 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Please provide a name")
+    @NotEmpty(message = "Please provide a name")
     @Column(name = "name", length = 100, nullable = false)
     private String name;
 
-    @NotNull(message = "Please provide a serial name")
+    @NotEmpty(message = "Please provide a serial name")
     @Column(name = "serialName", length = 50, nullable = false)
     private String serialName;
 
-    @NotNull(message = "Please provide a description")
+    @NotEmpty(message = "Please provide a description")
     @Column(name = "description", length = 250, nullable = false)
     private String description;
 
+    @NotEmpty
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
     @JoinTable(name = "products_brands", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
             @JoinColumn(name = "brand_id") })
     private Set<Brand> brands = new HashSet<Brand>();
 
+    @NotEmpty
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name = "products_categories", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
             @JoinColumn(name = "category_id") })
     private Set<Category> categories = new HashSet<Category>();
 
+    @NotEmpty
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name = "products_prices", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
             @JoinColumn(name = "price_id") })
