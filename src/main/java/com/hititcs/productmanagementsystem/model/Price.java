@@ -31,6 +31,6 @@ public class Price {
     private long price_info;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "prices")
-    private Set<Product> products = new HashSet<Product>();
+    private Set<Product> products = new HashSet< >();
 
 }

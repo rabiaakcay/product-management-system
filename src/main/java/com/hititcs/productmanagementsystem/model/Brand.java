@@ -33,5 +33,5 @@ public class Brand {
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE , CascadeType.REMOVE}, mappedBy = "brands")
-    private Set<Product> products = new HashSet<Product>();
+    private Set<Product> products = new HashSet< >();
 }

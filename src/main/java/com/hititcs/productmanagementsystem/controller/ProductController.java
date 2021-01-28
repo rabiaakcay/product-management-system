@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -55,18 +57,23 @@ public class ProductController {
         return "list-product";
     }
 
-    @GetMapping("/add")
-    public String showCreateForm(Product product, Model model) {
-        model.addAttribute("categories", categoryService.findAllCategories());
-        model.addAttribute("brands", brandService.findAllBrands());
-        model.addAttribute("prices", priceService.findAllPrices());
+    @RequestMapping("/add")
+    public String showCreateForm(@ModelAttribute("product") Product product, Model model,BindingResult result) {
+        loadProductAttributeValues(model);
         return "add-product";
     }
 
+    private void loadProductAttributeValues(Model model) {
+        model.addAttribute("categories", categoryService.findAllCategories());
+        model.addAttribute("brands", brandService.findAllBrands());
+        model.addAttribute("prices", priceService.findAllPrices());
+    }
+
     @RequestMapping("/add-product")
-    public String createProduct(@Valid Product product, BindingResult result, Model model) {
+    public String createProduct(@ModelAttribute("product") @Valid Product product, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
-            return "add-product";
+            loadProductAttributeValues(model);
+           return "add-product";
         }
 
         productService.createProduct(product);

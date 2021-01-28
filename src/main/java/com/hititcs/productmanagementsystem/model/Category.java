@@ -33,6 +33,6 @@ public class Category {
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "categories")
-    private Set<Product> products = new HashSet<Product>();
+    private Set<Product> products = new HashSet< >();
 
 }

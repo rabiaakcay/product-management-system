@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 import lombok.Getter;
@@ -44,22 +43,22 @@ public class Product {
     private String description;
 
     @NotEmpty
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
     @JoinTable(name = "products_brands", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
             @JoinColumn(name = "brand_id") })
-    private Set<Brand> brands = new HashSet<Brand>();
+    private Set<Brand> brands = new HashSet< >();
 
     @NotEmpty
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name = "products_categories", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
             @JoinColumn(name = "category_id") })
-    private Set<Category> categories = new HashSet<Category>();
+    private Set<Category> categories = new HashSet< >();
 
     @NotEmpty
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name = "products_prices", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
             @JoinColumn(name = "price_id") })
-    private Set<Price> prices = new HashSet<Price>();
+    private Set<Price> prices = new HashSet< >();
 
     public Product(String name, String serialName, String description) {
         this.name = name;
