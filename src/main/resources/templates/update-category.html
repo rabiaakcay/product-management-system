@@ -17,12 +17,14 @@
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
-                <form action="#" th:action="@{/update-category/{id}(id=${category.id})}" th:object="${category}" method="post">
+                <form action="#" th:action="@{/update-category/{id}(id=${category.id})}" th:object="${category}"
+                      method="post">
                     <div class="row">
 
                         <div class="form-group col-md-8">
                             <label for="name" class="col-form-label">Category Name</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Category Name" />
+                            <input type="text" th:field="*{name}" class="form-control" id="name"
+                                   placeholder="Category Name"/>
                         </div>
 
                         <div class="col-md-6">

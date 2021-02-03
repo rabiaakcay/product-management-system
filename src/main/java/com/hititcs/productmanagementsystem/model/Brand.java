@@ -29,9 +29,9 @@ public class Brand {
     private Long id;
 
     @NotEmpty(message = "Please provide a name")
-    @Column(name = "name", length = 100, nullable = false,unique = true)
+    @Column(name = "name", length = 100, nullable = false, unique = true)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE , CascadeType.REMOVE}, mappedBy = "brands")
-    private Set<Product> products = new HashSet< >();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "brands")
+    private Set<Product> products = new HashSet<>();
 }

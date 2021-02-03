@@ -42,23 +42,20 @@ public class Product {
     @Column(name = "description", length = 250, nullable = false)
     private String description;
 
-    @NotEmpty
-    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-    @JoinTable(name = "products_brands", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "brand_id") })
-    private Set<Brand> brands = new HashSet< >();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @JoinTable(name = "products_brands", joinColumns = {@JoinColumn(name = "product_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "brand_id")})
+    private Set<Brand> brands = new HashSet<>();
 
-    @NotEmpty
-    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "products_categories", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "category_id") })
-    private Set<Category> categories = new HashSet< >();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "products_categories", joinColumns = {@JoinColumn(name = "product_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "category_id")})
+    private Set<Category> categories = new HashSet<>();
 
-    @NotEmpty
-    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "products_prices", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "price_id") })
-    private Set<Price> prices = new HashSet< >();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "products_prices", joinColumns = {@JoinColumn(name = "product_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "price_id")})
+    private Set<Price> prices = new HashSet<>();
 
     public Product(String name, String serialName, String description) {
         this.name = name;

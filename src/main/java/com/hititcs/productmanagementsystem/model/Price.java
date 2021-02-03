@@ -27,8 +27,8 @@ public class Price {
     private Long id;
 
     @Min(1)
-    @Column(name = "price_info", length = 100, nullable = false, unique = true)
-    private long price_info;
+    @Column(name = "priceInfo", length = 100, nullable = false, unique = true)
+    private long priceInfo;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "prices")
     private Set<Product> products = new HashSet< >();

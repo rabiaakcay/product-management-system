@@ -6,8 +6,8 @@
     <title>All Prices</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 
 </head>
 <body>
@@ -33,9 +33,11 @@
                             </thead>
                             <tbody>
                             <tr th:each="price : ${prices}">
-                                <td th:text="${price.price_info}"></td>
-                                <td><a th:href="@{/updatePrice/{id}(id=${price.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                <td><a th:href="@{/remove-price/{id}(id=${price.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                <td th:text="${price.priceInfo}"></td>
+                                <td><a th:href="@{/updatePrice/{id}(id=${price.id})}" class="btn btn-primary"><i
+                                        class="fas fa-user-edit ml-2"></i></a></td>
+                                <td><a th:href="@{/remove-price/{id}(id=${price.id})}" class="btn btn-primary"><i
+                                        class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
                             </tbody>
                         </table>

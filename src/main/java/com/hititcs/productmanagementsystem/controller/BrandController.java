@@ -7,9 +7,7 @@ import com.hititcs.productmanagementsystem.service.BrandService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -73,13 +71,12 @@ public class BrandController {
         return "redirect:/brands";
     }
 
-    @RequestMapping("/remove-brand/{id}")
+    @DeleteMapping("/remove-brand/{id}")
     public String deleteBrand(@PathVariable("id") Long id, Model model) {
         brandService.deleteBrand(id);
 
         model.addAttribute("brand", brandService.findAllBrands());
         return "redirect:/brands";
     }
-
 }
 
